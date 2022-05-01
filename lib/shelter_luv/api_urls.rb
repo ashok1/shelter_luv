@@ -2,12 +2,11 @@
 
 module ShelterLuv
   class ApiUrls
-    BASE_URL = "https://www.shelterluv.com/api/v1/"
     PARAMS_IDENTIFIER = ":$$id"
 
     class << self
       def generate_url_for(type, page = 1, id = "")
-        concatinate_pagination(BASE_URL + sl_url_for(type, id), page)
+        concatinate_pagination(ShelterLuv.configuration.base_url + sl_url_for(type, id), page)
       end
     end
 

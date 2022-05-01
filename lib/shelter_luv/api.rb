@@ -52,8 +52,8 @@ module ShelterLuv
 
     private
 
-    def api_request(type, id = "", page = 1)
-      ShelterLuv::Api.get(ShelterLuv::ApiUrls.generate_url_for(type, page, id))
+    def api_request(type, id = "", page = 1, x_api_key = ShelterLuv.configuration.x_api_key)
+      ShelterLuv::Api.get(ShelterLuv::ApiUrls.generate_url_for(type, page, id, x_api_key))
     end
   end
 end

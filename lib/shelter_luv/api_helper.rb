@@ -3,11 +3,11 @@
 module ShelterLuv
   class Api
     class << self
-      def get(path)
-        validate_x_api_key
+      def get(path, x_api_key)
+        validate_x_api_key(x_api_key)
         uri = URI.parse(path)
         req = Net::HTTP::Get.new(uri)
-        req["X-Api-Key"] = ShelterLuv.configuration.x_api_key
+        req["X-Api-Key"] = x_api_key
         res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
           http.request(req)
         end
@@ -16,8 +16,8 @@ module ShelterLuv
 
       private
 
-      def validate_x_api_key
-        return unless ShelterLuv.configuration.x_api_key.blank?
+      def validate_x_api_key(x_api_key)
+        return unless x_api_key.blank?
 
         raise Errors::InvalidApiKeyError, "Ensure X-API-KEY is not blank."
       end
