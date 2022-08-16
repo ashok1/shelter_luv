@@ -2,7 +2,7 @@
 
 module ShelterLuv
   class Configuration
-    attr_accessor :x_api_key, :page_size
+    attr_accessor :x_api_key, :page_size, :base_url
 
     def initialize
       @x_api_key = nil
