@@ -9,18 +9,16 @@ require_relative "shelter_luv/api"
 
 module ShelterLuv
   class << self
-    attr_accessor :configuration
-  end
+    def configuration
+      @configuration ||= Configuration.new
+    end
 
-  def self.configuration
-    @configuration ||= Configuration.new
-  end
+    def configure
+      yield(configuration)
+    end
 
-  def self.reset
-    @configuration = Configuration.new
-  end
-
-  def self.configure
-    yield(configuration)
+    def reset
+      @configuration = Configuration.new
+    end
   end
 end
