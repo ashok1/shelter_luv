@@ -20,7 +20,7 @@ module ShelterLuv
                 animal_events: "animals/#{PARAMS_IDENTIFIER}/events",
                 all_vaccines: "vaccines",
                 animal_vaccines: "animals/#{PARAMS_IDENTIFIER}/vaccines",
-                parteners: "partners/#{PARAMS_IDENTIFIER}" }
+                partners: "partners/#{PARAMS_IDENTIFIER}" }
         url[type].gsub(PARAMS_IDENTIFIER, id)
       end
 
