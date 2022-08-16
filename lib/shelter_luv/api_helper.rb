@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+require "net/http"
+require "uri"
+require "json"
+
 module ShelterLuv
   class Api
     class << self
@@ -17,7 +21,7 @@ module ShelterLuv
       private
 
       def validate_x_api_key(x_api_key)
-        return unless x_api_key.blank?
+        return unless x_api_key.nil? || x_api_key.empty?
 
         raise Errors::InvalidApiKeyError, "Ensure X-API-KEY is not blank."
       end
